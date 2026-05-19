@@ -13,6 +13,9 @@ This is an OOP-practice project. The mosaic engine and the chess layer are
 deliberately separable: mosaic doesn't know chess exists; chess depends on
 mosaic, not the reverse.
 
+<img width="669" height="692" alt="image" src="https://github.com/user-attachments/assets/0fd4a2c6-1c5d-4972-8812-825075de9808" />
+
+
 ## Requirements
 
 - Linux (Mac/Windows not supported)
