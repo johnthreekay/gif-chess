@@ -1,3 +1,4 @@
+#include "mosaic/AssetPath.h"
 #include "mosaic/CellAssignment.h"
 #include "mosaic/Font.h"
 #include "mosaic/GridLayout.h"
@@ -273,9 +274,10 @@ void runChessVsRandom(std::uint64_t seed) {
 }
 
 void runChessSpritesDemo(int cellSize) {
+  std::string const piecesDir = mosaic::assetRoot() + "/pieces";
   std::cout << "[chess sprites] cellSize=" << cellSize
-            << ", loading assets/pieces/*.png\n";
-  chess::PieceSprites sprites("assets/pieces", cellSize);
+            << ", loading " << piecesDir << "/*.png\n";
+  chess::PieceSprites sprites(piecesDir, cellSize);
 
   mosaic::GridLayout layout(/*rows=*/8, /*cols=*/8, cellSize, /*margin=*/0,
                             mosaic::LabelStyle::None);
@@ -329,7 +331,7 @@ void runChessOverlayDemo(std::string const& clipPath, int cellSize) {
   mosaic::MosaicComposer composer(std::move(layout), std::move(sources),
                                   std::move(assignment), std::move(labels));
 
-  chess::PieceSprites sprites("assets/pieces", cellSize);
+  chess::PieceSprites sprites(mosaic::assetRoot() + "/pieces", cellSize);
   chess::ChessOverlay overlay(composer.layout(), std::move(sprites));
   chess::GameState state;
 
@@ -377,7 +379,7 @@ void runInteractiveGame(std::string const& clipPath, std::string const& opponent
                                   std::move(assignment), /*labels=*/nullptr);
 
   mosaic::GridLayout chessLayout(8, 8, squareSize, margin, mosaic::LabelStyle::Margin);
-  chess::PieceSprites sprites("assets/pieces", squareSize);
+  chess::PieceSprites sprites(mosaic::assetRoot() + "/pieces", squareSize);
   chess::ChessOverlay overlay(chessLayout, std::move(sprites));
 
   auto engine = makeEngine(opponent, skill);

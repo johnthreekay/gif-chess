@@ -6,6 +6,7 @@
 #include "chess/Game.h"
 #include "chess/PieceSprites.h"
 #include "chess/StockfishEngine.h"
+#include "mosaic/AssetPath.h"
 #include "mosaic/CellAssignment.h"
 #include "mosaic/GridLayout.h"
 #include "mosaic/LabelRenderer.h"
@@ -363,7 +364,7 @@ void Prompt::cmdChessVideo(std::string const& videoPath, int squareSize) {
 
     // Independent 8x8 layout for the chess board (same canvas dimensions).
     GridLayout chessLayout(8, 8, squareSize, margin, LabelStyle::Margin);
-    chess::PieceSprites sprites("assets/pieces", squareSize);
+    chess::PieceSprites sprites(assetRoot() + "/pieces", squareSize);
     chess::ChessOverlay overlay(chessLayout, std::move(sprites));
     printEngineStrength();
     auto engine = makePromptEngine(engineSkill_, engineElo_);
@@ -401,7 +402,7 @@ void Prompt::cmdChess(std::vector<std::string> const& args) {
   try {
     auto bundle = buildComposer(library_, /*rows=*/8, /*cols=*/8, cellSize,
                                 /*labels=*/nullptr, /*seed=*/42);
-    chess::PieceSprites sprites("assets/pieces", cellSize);
+    chess::PieceSprites sprites(assetRoot() + "/pieces", cellSize);
     chess::ChessOverlay overlay(bundle.composer.layout(), std::move(sprites));
     printEngineStrength();
     auto engine = makePromptEngine(engineSkill_, engineElo_);

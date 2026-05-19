@@ -2,6 +2,7 @@
 
 #include "chess/Piece.h"
 #include "chess/Sounds.h"
+#include "mosaic/AssetPath.h"
 #include "mosaic/Painter.h"
 #include "mosaic/SDLTypes.h"
 
@@ -255,7 +256,7 @@ void Game::takeBack() {
 
 void Game::run() {
   mosaic::SDLInit sdl;
-  Sounds sounds;  // chess.com-style move/capture/game-end cues; silent if no audio
+  Sounds sounds(mosaic::assetRoot() + "/sounds");  // chess.com-style cues; silent if no audio
 
   int const w = composer_.layout().canvasWidth();
   int const h = composer_.layout().canvasHeight();

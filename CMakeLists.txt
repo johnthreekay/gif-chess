@@ -28,6 +28,7 @@ add_executable(mosaic
   src/mosaic/SDLTypes.cpp
   src/mosaic/MosaicExporter.cpp
   src/mosaic/Json.cpp
+  src/mosaic/AssetPath.cpp
   src/mosaic/Downloader.cpp
   src/mosaic/Library.cpp
   src/mosaic/SearchProvider.cpp

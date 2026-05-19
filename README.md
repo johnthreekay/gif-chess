@@ -30,9 +30,21 @@ cmake -B build
 cmake --build build
 ```
 
-This produces the `mosaic` binary in `build/`.
+This produces the binary at `build/mosaic`. It's not installed on `PATH`,
+so run it by path:
+
+```bash
+./build/mosaic browse        # from the repo root
+cd build && ./mosaic browse  # or from inside build/
+```
+
+Asset paths are resolved relative to the executable, so it works from any
+working directory.
 
 ## Usage
+
+In the table below, `mosaic` is shorthand for `./build/mosaic` (run from the
+repo root).
 
 ```
 mosaic prompt                      interactive REPL: add files/URLs, search GIFs, preview, export, play chess
