@@ -69,4 +69,5 @@ key is set.
 ## License
 
 [ISC](LICENSE)
+
 Bundled assets in assets/ are third-party under their own terms.
